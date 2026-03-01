@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: deployments/Dockerfile
+      args:
+        SERVICE: app
+    environment:
+      - APP_ADDR=:8080
+    ports:
+      - "8080:8080"
+
+  collector:
+    build:
+      context: ..
+      dockerfile: deployments/Dockerfile
+      args:
+        SERVICE: collector
+    environment:
+      - COLLECTOR_ADDR=:9090
+    ports:
+      - "9090:9090"
